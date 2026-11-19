@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, SafeAreaView, FlatList, StatusBar, Pressable } from 'react-native'
+import { StyleSheet, Text, View, TextInput, FlatList, StatusBar, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { currencyByRupee } from './constants'
 import CurrencyButton from './components/CurrencyButton'
@@ -63,7 +63,7 @@ export default function App() {
           </View>
           
           {resultValue &&(
-            <Text style={styles.resultValue}>{resultValue}</Text>
+            <Text style={styles.resultTxt}>{resultValue}</Text>
           )}
         </View>
 
@@ -74,7 +74,7 @@ export default function App() {
             keyExtractor={item => item.name}
             renderItem={({item}) => (
               <Pressable 
-              style={[styles.button, targetCurrency ===  item.name && styles.released]}
+              style={[styles.button, targetCurrency ===  item.name && styles.selected]}
               onPress={() => buttonPressed(item)}              >
 
               <CurrencyButton {...item}/>
@@ -93,7 +93,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop:100,
     backgroundColor: '#515151',
+    justifyContent:'center',
+    alignItems:'center'
   },
   topContainer: {
     flex: 1,
